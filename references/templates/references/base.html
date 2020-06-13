@@ -1,0 +1,30 @@
+{% load static %}
+{% load references_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}{% endblock title%}
+    </title>
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.css' %}">
+</head>
+<body>
+    {% include "account/menubar2.html" %}
+    <div id="content">
+        {% block content %}{% endblock content %}
+    </div>
+    <div id="sidebar">
+        <h2>references</h2>
+        <a href="{% url 'references:references_create'%}">New references</a>
+
+
+        <h3>Latest references</h3>
+        {% show_latest_references 3 %}
+        
+    </div>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{% extends 'references/base.html' %}
+{% load references_tags %}
+
+{% block title %}
+    {{  references.title  }}
+{% endblock title %}
+
+{% block content %}
+   <h1>{{   references.titleRf  }}</h1>
+   <h2>{{ references.descriptionRf }}</h2>
+   <p class="date">
+       Published {{references.titleRf}} by {{references.authorRf}}
+   </p>
+   {{ references.body }}
+
+{% endblock content %}

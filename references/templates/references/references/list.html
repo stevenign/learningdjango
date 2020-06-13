@@ -1,0 +1,31 @@
+{% extends 'references/base.html' %}
+
+
+{% block title %}
+references
+{% endblock title %}
+
+{% block content %}
+    <h1>references</h1>
+   
+    {% for references in referencess %}
+        <h2>
+            <a href="{{ references.get_absolute_url }}">
+                {{  references.titleRf }}
+            </a>
+        </h2>
+           
+        <h3>
+            <a href="{{references.linkRf}}">{{references.linkRf}}</a>
+        </h3>
+        <p class="date">
+            Published {{ references.titleRf }} by {{ references.authorRf }}, {{ references.publish }}
+        </p>
+        {{ references.body|truncatewords_html:30 }}
+        {% if references.authorRf == request.user %}
+        <a href="{% url 'references:references_update' references.id %}">Update references</a> | 
+        <a href="{% url 'references:references_delete' references.id %}">Delete references</a>
+        {% endif %}
+    {% endfor %}
+
+{% endblock content %}
